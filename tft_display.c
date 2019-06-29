@@ -22,6 +22,7 @@ static int major_num;
 static int device_open_count = 0;
 static char msg_buffer[MSG_BUFFER_LEN];
 static char *msg_ptr;
+static unsigned int volatile * const gpio_setdataout = (unsigned int *) 0x4804C194;
 
 /* This structure points to all the device functions */
 static struct file_operations file_ops = 
@@ -100,6 +101,9 @@ static int __init tft_display_init(void)
 	else
 	{
 		printk(KERN_INFO "TFT display module loaded with device major number %d\n", major_num);
+		printk(KERN_INFO "The value pushed into setdataout will be %d\n", (1<<22));
+		// Turn on USR1 and USR3 to indicate a successful module load!
+		*gpio_setdataout = (1<<22);
 		return 0;	// Non-zero means it can't be loaded
 	}
 }
