@@ -1,0 +1,1 @@
+cmd_/home/debian/tft_display/tft_display.ko := ld -EL -r  -T ./scripts/module-common.lds --build-id  -T ./arch/arm/kernel/module.lds -o /home/debian/tft_display/tft_display.ko /home/debian/tft_display/tft_display.o /home/debian/tft_display/tft_display.mod.o ;  true

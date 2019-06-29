@@ -1,0 +1,7 @@
+tft_display
+*.ko
+*.mod.c
+*.mod.o
+*.o
+Module.symvers
+modules.order
